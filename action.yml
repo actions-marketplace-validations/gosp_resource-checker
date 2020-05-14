@@ -1,0 +1,16 @@
+name: 'analysis resource issues'
+description: 'parse and analysis resource files'
+author: 'taodong lu'
+inputs:
+  languages:
+    description: 'language list'
+    default: [] # [en, fr]
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.languages }}
+branding:
+  icon: 'command'
+  color: 'gray-dark'
