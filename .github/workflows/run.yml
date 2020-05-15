@@ -10,24 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Java JDK
-        uses: actions/setup-java@v1.3.0
-        with:
-          java-version: 1.8
-          #      - name: Grant execute permission for gradlew
-          #        run: chmod +x gradlew
-          #      - name: Build with Gradle
-          #        run: ./gradlew build
-      - name: Hello world action step
+      - name: Test
+        uses: ./ # Uses an action in the root directory
         id: hello
-        uses: actions/hello-world-docker-action@v1
         with:
-          who-to-greet: 'Mona the Octocat'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
-        #      - name: Actifacts publish
-        #        uses: actions/upload-artifact@v2
-        #        with:
-        #          name: resouce-checker
-        #          path: build/distributions/resource-checker.zip
+          languages: en-US fr-FR
+      - name: Actifacts publish
+        uses: actions/upload-artifact@v2
+        with:
+          name: resouce-check-result
+          path: detail.csv

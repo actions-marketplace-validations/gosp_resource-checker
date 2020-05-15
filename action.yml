@@ -4,7 +4,7 @@ author: 'taodong lu'
 inputs:
   languages:
     description: 'language list'
-    default: [] # [en, fr]
+    default: 'en-US' # multiple languages are splitted using space 
     required: true
 runs:
   using: 'docker'
