@@ -10,11 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Test
+      - name: G11n Analysis
         uses: ./ # Uses an action in the root directory
-        id: hello
         with:
           languages: en-US fr-FR
+      - name: check result
+        run: awk -F',' 'FNR==2 {print $4}' summary.csv | xargs -I{} sh -c 'if [ "{}" -gt "0" ]; then echo "error:{}";/bin/false; fi'
       - name: Actifacts publish
         uses: actions/upload-artifact@v2
         with:
