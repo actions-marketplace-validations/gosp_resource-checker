@@ -1,7 +1,7 @@
 #!/bin/sh
 mkdir -p $PWD/.cache
 
-/g11nradar/bin/g11n-radar -p $PWD -c $PWD/.cache -d $PWD/detail.csv -s $PWD/summary.csv rule --nostring --locale $*
+/g11nradar/bin/g11n-radar -p $PWD -c $PWD/.cache -d $PWD/detail.csv -s $PWD/summary.csv rule --nostring --skip bundlegen/** --locale $*
 
 number=`awk -F',' 'FNR==2 {print $4}' summary.csv`
  

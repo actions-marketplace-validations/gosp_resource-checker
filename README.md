@@ -3,11 +3,12 @@ parse and analysis resource files
 
 ## Usage
 ```
-      - name: Test
-        uses: gosp/resource-checker@v1.1
+      - name: G11n Analysis
+        uses: gosp/resource-checker@v1.3
         with:
           languages: en-US fr-FR 
       - name: Actifacts publish
+        if: ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
           name: resouce-check-result
